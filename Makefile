@@ -4,7 +4,7 @@ all: hello mutex_example
 hello: src/main.cpp
 	g++ -o hello src/main.cpp
 
-mutex_example: src/mutex_example.o include/increment.o include/decrement.o
+mutex_example: src/mutex_example.o include/increment.o include/decrement.o include/fifo.o
 	g++ -I include -l pthread src/mutex_example.o include/*.o -o mutex_example
 
 mutex_example.o: src/mutex_example.cpp
@@ -18,6 +18,10 @@ decrement.o: include/decrement.cpp include/decrement.h
 increment.o: include/increment.cpp include/increment.h 
 	g++ -c include/increment.cpp
 	mv increment.o include
+
+fifo.o: include/fifo.cpp include/fifo.h
+	g++ -c include/fifo.cpp
+	mv fifo.o include
 
 .PHONY: clean
 clean:
