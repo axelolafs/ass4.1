@@ -2,8 +2,8 @@
 all: hello
 
 .PHONY: hello
-hello: hello.cpp
-	g++ -o hello hello.cpp
+hello: main.cpp
+	g++ -o hello main.cpp
 
 .PHONY: install
 install:
