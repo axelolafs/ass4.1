@@ -1,12 +1,15 @@
-#include "../include/mutex.h"
+#include "../include/decrement.h"
+#include "../include/increment.h"
 #include <pthread.h>
 
 pthread_t incrementTaskObj, decrementTaskObj;
+pthread_mutex_t sharedVariableMutex;
+int gSharedVariable = 0;
 
 int main(void){
     
-    // pthread_mutex_init(&sharedVariableMutex, NULL);
-    initMutex();
+    pthread_mutex_init(&sharedVariableMutex, NULL);
+    // initMutex();
 
     pthread_create(&incrementTaskObj, NULL, incrementTask, NULL);
     pthread_create(&decrementTaskObj, NULL, decrementTask, NULL);
